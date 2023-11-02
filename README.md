@@ -12,3 +12,4 @@ Introducción a la Programación
 
 - **Aguirre Lucas Sebastian** - Legajo FAI-4087 - mail: luneu2015@gmail.com - Github: 0LucasAguirre
 
+- **Braian Condori Ezequiel** - Legajo FAI-5001 - mail: braiancondorinqn1@hotmail.com - Github: ColdSh0ck
