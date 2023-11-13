@@ -17,8 +17,6 @@ function cargarColeccionPalabras()
     }
 
 
-
-
     //ejercicio 2
     /**
      * 
@@ -42,8 +40,6 @@ function cargarPartidas()
         return $partidasGuardadas;
     } 
     
-
-
 
 
 //ejercicio 3
@@ -85,8 +81,6 @@ function seleccionarOpcion()
     
     return $opcion;
 }
-
-
 
 
     //ejercicio 6

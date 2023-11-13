@@ -32,7 +32,7 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 function solicitarNumeroEntre($min, $max)
 {
     //int $numero
-
+    echo "Debe ingresar un número entre " . $min . " y " . $max . ": ";
     $numero = trim(fgets(STDIN));
 
     if (is_numeric($numero)) { //determina si un string es un número. puede ser float como entero.
@@ -330,11 +330,19 @@ function esIntentoGanado($estructuraPalabraIntento)
 /**
  * ****COMPLETAR***** documentación de la intefaz
  */
-function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($numIntento)  /* ****COMPLETAR***** parámetros formales necesarios */
 {
-
+    switch($numIntento){
+        case 1: $puntaje = 6 ; break;
+        case 2: $puntaje = 5 ; break;
+        case 3: $puntaje = 4 ; break;
+        case 4: $puntaje = 3 ; break;
+        case 5: $puntaje = 2 ; break;
+        case 6: $puntaje = 1 ; break;
+        default: $puntaje = 0; break;
+    }
     /* ****COMPLETAR***** cuerpo de la función*/
-    return 0;
+    return $puntaje;
 }
 
 /**
@@ -369,7 +377,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     if ($ganoElIntento) {
         $nroIntento--;
-        $puntaje = obtenerPuntajeWordix();
+        $puntaje = obtenerPuntajeWordix($nroIntento);
         echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
     } else {
         $nroIntento = 0; //reset intento
@@ -378,7 +386,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
     }
 
     $partida = [
-        "palabraWordix" => $palabraWordix,
+        "palabraWordix " => $palabraWordix,
         "jugador" => $nombreUsuario,
         "intentos" => $nroIntento,
         "puntaje" => $puntaje
@@ -386,3 +394,5 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     return $partida;
 }
+
+
