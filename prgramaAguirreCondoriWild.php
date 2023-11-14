@@ -96,3 +96,142 @@ function seleccionarOpcion()
         echo "Intento: " . $partidasGuardadas[$numPartida]["intentos"]."\n";
         
     }
+
+
+
+//ejercicio 7
+
+    /**
+     * 
+     * 
+     * 
+     * 
+     */
+    function agregarPalabra($coleccionPalabras, $nuevaPalabra)
+    {      
+        array_push($coleccionPalabras, $nuevaPalabra);
+        return $coleccionPalabras;
+        
+    }
+    function nuevaPalabraWordix($coleccionPalabras)
+    {
+        
+        $cantidadDePalabras = count($coleccionPalabras);      
+        do{
+            $palabraSeRepite = false;
+            $i = 0;
+            $nuevaPalabra = leerPalabra5Letras();
+            while ($i < $cantidadDePalabras ){
+                if( $nuevaPalabra == $coleccionPalabras[$i]){
+                    $palabraSeRepite = true;
+                    echo "Ya existe la palabra ".$nuevaPalabra." en Wordix. \n"; 
+                }
+                $i++;
+            }
+            
+        }while($palabraSeRepite);
+        
+       return $nuevaPalabra;
+    }
+    
+    //ejercicio 7 PERO PARA ARRAYS
+
+    /**
+     * 
+     * 
+     * 
+     * 
+     */
+    function agregarPartida($coleccionPartidas, $nuevaPartida)
+    {  
+        array_push($coleccionPartidas, $nuevaPartida);
+        return $coleccionPartidas;
+        
+    }
+    
+
+    //ejercicio 8
+
+    /**
+     * 
+     * 
+     * 
+     * 
+     */
+    function primerPartidaGanada($coleccionDePartidas, $jugador)
+    {  
+        $long = count( $coleccionDePartidas );
+        $i = 0;
+        $indiceBuscado = -1;
+        $puntaje = 0 ;     
+          
+        while(  $i < $long && $puntaje == 0 ){
+            if ($coleccionDePartidas[$i]["jugador"] == $jugador && $coleccionDePartidas[$i]["puntaje"] > 0 ){             
+                $puntaje = $coleccionDePartidas[$i]["puntaje"] ; 
+                $indiceBuscado = $i;
+            }
+            $i++;
+        } 
+        return $indiceBuscado;              
+    }
+        
+
+
+
+//ejercicio 9
+
+    /**
+     * 
+     * 
+     *  $partidasGuardadas[9]= ["palabraWordix "=> "NUDOS" , "jugador" => "ana", "intentos"=> 3, "puntaje" => 14] ;
+     * 
+     */
+    function datosJugadorDeterminado($registroPartidas, $jugadorAbuscar)
+    {  
+        $datosJugador["nombreJugador"] = $jugadorAbuscar;
+        $datosJugador["numPartidas"] = 0;
+        $datosJugador["puntajeTotal"] = 0;
+        $datosJugador["victorias"] = 0;
+        $datosJugador["intento1"] = 0;
+        $datosJugador["intento2"] = 0;
+        $datosJugador["intento3"] = 0;
+        $datosJugador["intento4"] = 0;
+        $datosJugador["intento5"] = 0;
+        $datosJugador["intento6"] = 0;
+        
+        foreach($registroPartidas as $indice => $dato){
+            if ( $registroPartidas [$indice]["jugador"] == $jugadorAbuscar ){         
+                $datosJugador["numPartidas"] = $datosJugador["numPartidas"] + 1;
+                $datosJugador["puntajeTotal"] = $datosJugador["puntajeTotal"] +   $registroPartidas[$indice]["puntaje"];
+                if($registroPartidas[$indice]["puntaje"] > 0){
+                    $datosJugador["victorias"] = $datosJugador["victorias"] + 1;
+                }
+                switch ($registroPartidas[$indice]["intentos"]){
+                    case 1: $datosJugador["intento1"] = $datosJugador["intento1"] + 1;break;
+                    case 2: $datosJugador["intento2"] = $datosJugador["intento2"] + 1;break;
+                    case 3: $datosJugador["intento3"] = $datosJugador["intento3"] + 1;break;
+                    case 4: $datosJugador["intento4"] = $datosJugador["intento4"] + 1;break;
+                    case 5: $datosJugador["intento5"] = $datosJugador["intento5"] + 1;break;
+                    case 6: $datosJugador["intento6"] = $datosJugador["intento6"] + 1;break;                      
+                }
+            }
+         }
+        
+         return $datosJugador;
+    }
+
+    function mostrarDatosJugador($datoJugador){
+         echo "jugador: " . $datoJugador["nombreJugador"] ."\n";
+         echo "Partidas: ".$datoJugador["numPartidas"] ."\n";
+         echo "Puntaje Total: " . $datoJugador["puntajeTotal"]."\n";
+         echo "Victorias: " .$datoJugador["victorias"]."\n";
+         echo "intento 1: " .$datoJugador["intento1"]."\n";
+         echo "intento 2: " .$datoJugador["intento2"]."\n";
+         echo "intento 3: " .$datoJugador["intento3"]."\n";
+         echo "intento 4: " .$datoJugador["intento4"]."\n";
+         echo "intento 5: " .$datoJugador["intento5"]."\n";
+         echo "intento 6: " .$datoJugador["intento6"]."\n";
+    }
+        
+  
+
