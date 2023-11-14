@@ -124,13 +124,13 @@ function seleccionarOpcion()
 
 
 
-//ejercicio 7
+//EJERCICIO 7
 
     /**
-     * 
-     * 
-     * 
-     * 
+     * Agrega una palabra al final de una coleccion/arreglo de palabras
+     * @param array $coleccionPalabras
+     * @param String $nuevaPalabra
+     * @return array $coleccionPalabras
      */
     function agregarPalabra($coleccionPalabras, $nuevaPalabra)
     {      
@@ -138,9 +138,16 @@ function seleccionarOpcion()
         return $coleccionPalabras;
         
     }
+    
+    /**
+     * Solicita el ingreso de una nueva palabra para Wordix, 
+     * la cual  no debe existir en la coleccion de palabras original.
+     * @param array $coleccionPalabras
+     * @return array $nuevaPalabra
+     */
     function nuevaPalabraWordix($coleccionPalabras)
     {
-        
+    // Boolean $palabraSeRepite, int $i, $cantidadDePalabras, String $nuevaPalabra
         $cantidadDePalabras = count($coleccionPalabras);      
         do{
             $palabraSeRepite = false;
@@ -159,32 +166,20 @@ function seleccionarOpcion()
        return $nuevaPalabra;
     }
     
-    //ejercicio 7 PERO PARA ARRAYS
-
-    /**
-     * 
-     * 
-     * 
-     * 
-     */
-    function agregarPartida($coleccionPartidas, $nuevaPartida)
-    {  
-        array_push($coleccionPartidas, $nuevaPartida);
-        return $coleccionPartidas;
-        
-    }
     
 
-    //ejercicio 8
+    //EJERCICIO 8
 
     /**
-     * 
-     * 
-     * 
-     * 
+     * Busca el numero de la partida con la primer victoria de un jugador determinado. 
+     * En caso este no haya ganado partidas el indice de retorno sera -1.
+     * @param array $coleccionDePartidas
+     * @param String $jugador
+     * @return array $indiceBuscado
      */
     function primerPartidaGanada($coleccionDePartidas, $jugador)
     {  
+        //int $long,$i,$indiceBuscado,puntaje
         $long = count( $coleccionDePartidas );
         $i = 0;
         $indiceBuscado = -1;
@@ -203,16 +198,19 @@ function seleccionarOpcion()
 
 
 
-//ejercicio 9
+//EJERCICIO 9
 
     /**
-     * 
-     * 
-     *  $partidasGuardadas[9]= ["palabraWordix "=> "NUDOS" , "jugador" => "ana", "intentos"=> 3, "puntaje" => 14] ;
-     * 
+     * Dado un registro de partidas y un nombre de jugador , busca los datos
+     * de juego de dicho jugador, retornado en un array los datos
+     * del jugador
+     * @param array $registroPartidas
+     * @param String $jugadorAbuscar
+     * @return array $datosJugador
      */
     function datosJugadorDeterminado($registroPartidas, $jugadorAbuscar)
-    {  
+    {    
+        //array $registroPartidas,$datosJugador, int $indice
         $datosJugador["nombreJugador"] = $jugadorAbuscar;
         $datosJugador["numPartidas"] = 0;
         $datosJugador["puntajeTotal"] = 0;
@@ -245,6 +243,10 @@ function seleccionarOpcion()
          return $datosJugador;
     }
 
+    /**
+     * Muestra en patalla los datos Wordix de un jugador
+     * @param array $datoJugador
+     */
     function mostrarDatosJugador($datoJugador){
          echo "jugador: " . $datoJugador["nombreJugador"] ."\n";
          echo "Partidas: ".$datoJugador["numPartidas"] ."\n";
@@ -257,17 +259,19 @@ function seleccionarOpcion()
          echo "intento 5: " .$datoJugador["intento5"]."\n";
          echo "intento 6: " .$datoJugador["intento6"]."\n";
     }
+        
+    
+//EJERCICIO 10
 
-
-/**
- * 
- * ejericio 10
- *
- * 
- * 
- */
+    /**
+     * solicita al usuario el nombre de un jugador y 
+     * retorna el nombre en minúsculas. Ademas asegura que el nombre del jugador 
+     * comience con una letra
+     * @return String $nombreJugadorMinuscula
+     */
 function  solicitarJugador()
 {
+    //String $nombreJugador, String $primerLetra, String $nombreJugadorMinuscula, Boolean $requisito
     do{
        echo "Ingrese su nombre de usuario (debe comenzar con una letra): \n";
     $nombreJugador = trim(fgets(STDIN));
@@ -284,9 +288,42 @@ function  solicitarJugador()
    
     return  $nombreJugadorMinuscula;
 }
+
+
+//EJERCICIO 11
+
+/**
+ *  Dada una colección de partidas, muestra la colección de partidas ordenada
+ *  por el nombre del jugador y por la palabra.
+ * @param array $coleccionPartidas
+ */
+
+ function collecionOrdenada($coleccionPartidas)
+{
+    uasort($coleccionPartidas, 'compararPartidas' );
+    print_r($coleccionPartidas);
+}
+
+/**
+ * En base a 2 partidas compara el orden lexicografico de los nombres
+ * de los jugadores y a posterior la palabraWordix. Retorna < 0 si partidaA es menor que partidaB
+ *  > 0 si partidaA es mayor que partidaB y 0 si son iguales. Lo mismo para la palabra Wordix si se hubiera mantenido
+ * la igualdad
+ * @param array $partidaA
+ * @param array $partidaA
+ * @return int $res
+ */
+function compararPartidas($partidaA , $partidaB)
+{   
+    //int $res
+    $res = strcmp($partidaA["jugador"],$partidaB["jugador"]);
+    if( $res == 0)
+    {
+        $res = strcmp($partidaA["palabraWordix "],$partidaB["palabraWordix "]);
+    }
+    return $res; 
+}
   
-
-
 
 do{
     $opcion = seleccionarOpcion();
