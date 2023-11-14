@@ -232,6 +232,32 @@ function seleccionarOpcion()
          echo "intento 5: " .$datoJugador["intento5"]."\n";
          echo "intento 6: " .$datoJugador["intento6"]."\n";
     }
-        
+
+
+/**
+ * 
+ * ejericio 10
+ *
+ * 
+ * 
+ */
+function  solicitarJugador()
+{
+    do{
+       echo "Ingrese su nombre de usuario (debe comenzar con una letra): \n";
+    $nombreJugador = trim(fgets(STDIN));
+    $primerLetra = $nombreJugador[0];
+    if(esPalabra($primerLetra)){
+        $nombreJugadorMinuscula = strtolower($nombreJugador);
+        $requisito = true;
+    }
+    else{
+        echo "Ingrese un nombre de usuario correcto.\n";
+        $requisito = false;
+    }
+    }while(!$requisito);
+   
+    return  $nombreJugadorMinuscula;
+}
   
 
