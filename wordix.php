@@ -327,10 +327,101 @@ function esIntentoGanado($estructuraPalabraIntento)
     return $ganado;
 }
 
+//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+//funciones que sirven para el puntaje
+
+/**
+ * busca una palabra o letra dentro de
+ * un arreglo 1D
+ * @param string $cadena
+ * @param string $letraBusqueda
+ * @return boolean
+ * 
+ */
+function busquedaString($cadena,$letraBusqueda){
+    //boolean $seEncuentra
+    //int $i
+    $seEncuentra=false;
+    
+    for($i=0;$i<strlen($cadena);$i++){
+        if($cadena[$i] == $letraBusqueda){
+            $seEncuentra=true;
+        }
+    }
+
+    return $seEncuentra;
+}
+
+/**
+ * da el puntaje si es vocal o consonante
+ * @string $cadena1
+ * @string $cadena2
+ * @string $letraBuscada
+ * @int $puntajeLetra
+ */
+function puntoPorLetra($cadena1,$cadena2,$letraBuscada){
+    $esVocal=busquedaString($cadena1,$letraBuscada);
+    $esConsonante=busquedaString($cadena2,$letraBuscada);
+    if ($esVocal){
+        $puntajeLetra=1;
+    }else{
+        $puntajeLetra=3;
+        if($esConsonante){
+            $puntajeLetra=2;
+        }
+
+    }
+
+    return $puntajeLetra; 
+}
+
+/**
+ * Obtiene el puntaje total de la palabra por sus letras
+ * @param array $arregloPalabras 
+ * @param string $cadenaVocales , $cadenaConsonantes
+ * @return int
+ */
+function puntajeLetrasPalabra($arregloPalabras,$cadenaVocales,$cadenaConsonantes){
+    //int  $puntajePorLetra, $puntajeLetraSelecionada
+    //array $arreglo1
+    //string $letra1
+    
+    $puntajePorLetras=0;    
+    foreach($arregloPalabras as $arreglo1){
+            $letra1=$arreglo1["letra"];
+            $puntajeLetraSelecionada=puntoPorLetra($cadenaVocales,$cadenaConsonantes,$letra1);
+            $puntajePorLetras=$puntajePorLetras+$puntajeLetraSelecionada;
+                       
+    }
+
+    return $puntajePorLetras;
+}
+
+/**
+ * carga las consonantes menores que la M sin las vocales
+ * @return string
+ */
+function cargarConsonantes(){
+    //string $consoSinVocales 
+    $consoSinVocales="BCDFGHJKLM";
+    return $consoSinVocales;
+}
+
+/**
+ * carga las vocales
+ * @return string
+ */
+function cargarVocales(){
+    //string $soloVocales
+    $solosVocales = "AEIOU";
+    return $solosVocales; 
+}
+
+
 /**
  * ****COMPLETAR***** documentación de la intefaz
  */
-function obtenerPuntajeWordix($numIntento)  /* ****COMPLETAR***** parámetros formales necesarios */
+function puntajePorIntentos($numIntento)  /* ****COMPLETAR***** parámetros formales necesarios */
 {
     switch($numIntento){
         case 1: $puntaje = 6 ; break;
@@ -344,6 +435,28 @@ function obtenerPuntajeWordix($numIntento)  /* ****COMPLETAR***** parámetros fo
     /* ****COMPLETAR***** cuerpo de la función*/
     return $puntaje;
 }
+
+
+
+/**
+ * ****COMPLETAR***** documentación de la intefaz
+ */
+function obtenerPuntajeWordix($ultimoIntWordix,$intJugados)  /* ****COMPLETAR***** parámetros formales necesarios */
+{
+    $consonantes= cargarConsonantes();
+    $vocal= cargarVocales();
+
+    $puntLetras=puntajeLetrasPalabra($ultimoIntWordix,$vocal,$consonantes);
+    $puntajeIntent=puntajePorIntentos($intJugados);
+    $puntajeTotal=$puntLetras+$puntajeIntent;
+    /* ****COMPLETAR***** cuerpo de la función*/
+    return $puntajeTotal;
+}
+
+
+
+
+//lllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
 
 /**
  * Dada una palabra para adivinar, juega una partida de wordix intentando que el usuario adivine la palabra.
@@ -377,7 +490,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     if ($ganoElIntento) {
         $nroIntento--;
-        $puntaje = obtenerPuntajeWordix($nroIntento);
+        $puntaje = obtenerPuntajeWordix($arregloDeIntentosWordix[$indiceIntento],$nroIntento);
         echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!";
     } else {
         $nroIntento = 0; //reset intento
