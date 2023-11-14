@@ -49,11 +49,23 @@ function cargarPartidas()
  */
 function nombreUsuario(){
     //string $usuario
-    echo "Ingrese su nombre de usuario: ";
-    $usuario=strtolower(trim(fgets(STDIN)));
-    return $usuario;
-}
+    $primerNombre=true;
+    do{
+        if($primerNombre){
+            echo "Ingrese su nombre de usuario: ";
+            $usuario=strtolower(trim(fgets(STDIN)));
+            $primerNombre=false;
+        }else{
+            echo "Ingrese otro nombre de usuario que no comience con un número: ";
+            $usuario=strtolower(trim(fgets(STDIN)));
+        }
+        $verificar = ctype_alpha($usuario[0]);
+        
+    }while(!$verificar);
 
+    return $usuario;
+
+}
 
 
 
