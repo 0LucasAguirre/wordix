@@ -42,6 +42,21 @@ function cargarPartidas()
     
 
 
+
+/**
+ * pide el nombre de usuario
+ * @return string
+ */
+function nombreUsuario(){
+    //string $usuario
+    echo "Ingrese su nombre de usuario: ";
+    $usuario=strtolower(trim(fgets(STDIN)));
+    return $usuario;
+}
+
+
+
+
 //ejercicio 3
 
     /**
