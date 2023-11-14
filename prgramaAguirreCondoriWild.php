@@ -65,37 +65,30 @@ function nombreUsuario(){
      * 
      * 
      */
-function seleccionarOpcion()
-{
-
-    echo "Menú de opciones:\n";
-    echo "1) Jugar al wordix con una palabra elegida\n";
-    echo "2) Jugar al wordix con una palabra aleatoria\n";
-    echo "3) Mostrar una partida\n";
-    echo "4) Mostrar la primer partida ganadora\n";
-    echo "5) Mostrar resumen de Jugador\n";
-    echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra\n";
-    echo "7) Agregar una palabra de 5 letras a Wordix\n";
-    echo "8) salir\n";
-
-    echo "Ingrese el numero de la opcion a seleccionar: ";
+/**
+ * menu de inicio
+ * @return int
+ */
+function seleccionarOpcion(){
+    //int $opcionElegida
     do{
-        $opcion = trim(fgets(STDIN));
-        switch ($opcion){    
-        case 1: echo "Seleccionaste la opción 1\n";break;
-        case 2: echo "Seleccionaste la opción 2\n";break;
-        case 3: echo "Seleccionaste la opción 3\n";break;
-        case 4: echo "Seleccionaste la opción 4\n";break;
-        case 5: echo "Seleccionaste la opción 5\n";break;
-        case 6: echo "Seleccionaste la opción 6\n";break;
-        case 7: echo "Seleccionaste la opción 7\n";break;
-        case 8: echo "Seleccionaste la opción 8\n";break;
-        default: echo "Seleccione una opcion valida\n";    
-    }}
-    while($opcion < 1 || $opcion >8);
-    
-    return $opcion;
+        echo "\n-------------------------------------------  \n";
+        echo "1) Jugar Wordix con una palabra elegida.\n";
+        echo "2) Jugar Wordix con una palabra aleatoria.\n";
+        echo "3) Mostrar una partida.\n";
+        echo "4) Mostrar la primer partida.\n";
+        echo "5) Mostrar resumen del jugador.\n";
+        echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra.\n";
+        echo "7) Agregar una palabra de 5 letras a Wordix.\n";
+        echo "8) Salir.\n";
+        echo "Selecione una de las opciones anteriores:(un numero del 1 al 8 ) ";
+        $opcionElegida = trim(fgets(STDIN));
+        echo "\n----------------------------------------------";
+        echo "\n\n";
+    }while(!(is_numeric($opcionElegida) && (($opcionElegida == (int)$opcionElegida) && ($opcionElegida >= 1 &&  $opcionElegida<= 8))));    
+    return $opcionElegida;
 }
+
 
 
     //ejercicio 6
@@ -275,4 +268,26 @@ function  solicitarJugador()
     return  $nombreJugadorMinuscula;
 }
   
+
+
+
+do{
+    $opcion = seleccionarOpcion();
+    switch ($opcion){    
+        case 1: echo "Seleccionaste la opción 1\n";break;
+        case 2: echo "Seleccionaste la opción 2\n";break;
+        case 3: echo "Seleccionaste la opción 3\n";break;
+        case 4: echo "Seleccionaste la opción 4\n";break;
+        case 5: echo "Seleccionaste la opción 5\n";break;
+        case 6: echo "Seleccionaste la opción 6\n";break;
+        case 7: echo "Seleccionaste la opción 7\n";break;
+        case 8: echo "Seleccionaste la opción 8\n";break;
+        default: echo "Seleccione una opcion valida\n";    
+
+        }
+}while($opcion != 8);
+
+
+
+
 
