@@ -5,7 +5,7 @@ include_once("wordix.php");
 
 /** Realizamos una función cargarColeccionesPalabras donde se guardaran palabras ya cargadas para poder elegir y jugar dentro de Wordix 
  * donde muestra variables del tipo array que tendran 15 palabras, todas de 5 letras de longitud 
- * @return indexado
+ * @return array (indexado)
  * */
 
     function cargarColeccionPalabras()
@@ -27,7 +27,7 @@ include_once("wordix.php");
 
     /**
      * Esta funcion carga las partidas guardadas
-     * @return multidimensional
+     * @return array (multidimensional)
      */
 function cargarPartidas()
 //array $partidaGuardadas
@@ -112,10 +112,11 @@ function cargarPartidas()
      * Agrega una palabra al final de una coleccion/arreglo de palabras
      * @param array $coleccionPalabras
      * @param String $nuevaPalabra
-     * @return array $coleccionPalabras
+     * @return array 
      */
     function agregarPalabra($coleccionPalabras, $nuevaPalabra)
     {      
+        //array $coleccionPalabras
         array_push($coleccionPalabras, $nuevaPalabra);
         return $coleccionPalabras;
         
@@ -157,7 +158,7 @@ function cargarPartidas()
      * En caso este no haya ganado partidas el indice de retorno sera -1.
      * @param array $coleccionDePartidas
      * @param String $jugador
-     * @return array $indiceBuscado
+     * @return array 
      */
     function primerPartidaGanada($coleccionDePartidas, $jugador)
     {  
@@ -188,7 +189,7 @@ function cargarPartidas()
      * del jugador
      * @param array $registroPartidas
      * @param String $jugadorAbuscar
-     * @return array $datosJugador
+     * @return array 
      */
     function datosJugadorDeterminado($registroPartidas, $jugadorAbuscar)
     {    
