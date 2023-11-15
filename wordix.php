@@ -27,7 +27,10 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /**************************************/
 
 /**
- *  ****COMPLETAR*****
+ * Veryfica si el numero es ENTERO, si esta en entre los valores $min y $max y si esta en forma de string, lo pasa a ENTERO, de lo contrario, volvera a solicitar otro numero
+ * @param int $min
+ * @param int $max
+ * @return int
  */
 function solicitarNumeroEntre($min, $max)
 {
@@ -120,7 +123,8 @@ function escribirSegunEstado($texto, $estado)
 }
 
 /**
- * ****COMPLETAR*****
+ * Muestra por pantalla, un mensaje de bienvenida a un nuevo jugador
+ * @param string $usuario
  */
 function escribirMensajeBienvenida($usuario)
 {
@@ -133,7 +137,9 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ *Funcion que verifica si todas las palabras dentro de un arreglo, son palabras del abecedario validas 
+ *@param string $cadena
+ *@return bool
  */
 function esPalabra($cadena)
 {
@@ -149,7 +155,8 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ * Funcion que verifica que la palabra contenga 5 letras y que sea una palabra valida del abecedario caso contrario, solicitara una nueva
+ * @return string
  */
 function leerPalabra5Letras()
 {
@@ -167,7 +174,7 @@ function leerPalabra5Letras()
 
 
 /**
- * Inicia una estructura de datos Teclado. La estructura es de tipo: ¿Indexado, asociativo o Multidimensional?
+ * Inicia una estructura de datos Teclado. La estructura es de tipo:asociativo
  *@return array
  */
 function iniciarTeclado()
@@ -220,6 +227,7 @@ function escribirTeclado($teclado)
  */
 function imprimirIntentosWordix($estructuraIntentosWordix)
 {
+     //int $cantIntentosRealizados, $i
     $cantIntentosRealizados = count($estructuraIntentosWordix);
     //$cantIntentosFaltantes = CANT_INTENTOS - $cantIntentosRealizados;
 
@@ -253,6 +261,7 @@ function imprimirIntentosWordix($estructuraIntentosWordix)
  */
 function analizarPalabraIntento($palabraWordix, $estruturaIntentosWordix, $palabraIntento)
 {
+    //int $cantCaracteres, $posicion, array $estructuraPalabraIntento, string $letraIntento, $estado
     $cantCaracteres = strlen($palabraIntento);
     $estructuraPalabraIntento = []; /*almacena cada letra de la palabra intento con su estado */
     for ($i = 0; $i < $cantCaracteres; $i++) {
@@ -287,6 +296,7 @@ function analizarPalabraIntento($palabraWordix, $estruturaIntentosWordix, $palab
  */
 function actualizarTeclado($teclado, $estructuraPalabraIntento)
 {
+    //string $letra, $estado, array $teclado
     foreach ($estructuraPalabraIntento as $letraIntento) {
         $letra = $letraIntento["letra"];
         $estado = $letraIntento["estado"];
@@ -307,10 +317,11 @@ function actualizarTeclado($teclado, $estructuraPalabraIntento)
 /**
  * Determina si se ganó una palabra intento posee todas sus letras "Encontradas".
  * @param array $estructuraPalabraIntento
- * @return bool
+ * @return boolean
  */
 function esIntentoGanado($estructuraPalabraIntento)
 {
+    //int $cantLetras, boolean $ganado
     $cantLetras = count($estructuraPalabraIntento);
     $i = 0;
 
@@ -327,7 +338,7 @@ function esIntentoGanado($estructuraPalabraIntento)
     return $ganado;
 }
 
-//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
 //funciones que sirven para el puntaje
 
 /**
@@ -419,7 +430,8 @@ function cargarVocales(){
 
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ * funcion que otorga un puntaje a base de sus intentos 
+ *@param int $numIntento
  */
 function puntajePorIntentos($numIntento)  /* ****COMPLETAR***** parámetros formales necesarios */
 {
@@ -439,10 +451,14 @@ function puntajePorIntentos($numIntento)  /* ****COMPLETAR***** parámetros form
 
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ * Funcion que calcula el puntaje total segun sus intentos y sus palabras
+ *@param int $ultimoIntWordix
+ *@param int $intJugados
+ *@return float
  */
 function obtenerPuntajeWordix($ultimoIntWordix,$intJugados)  /* ****COMPLETAR***** parámetros formales necesarios */
 {
+    //string $consonantes, $vocal, float $puntLetras, $puntajeIntent, $puntajeTotal
     $consonantes= cargarConsonantes();
     $vocal= cargarVocales();
 
