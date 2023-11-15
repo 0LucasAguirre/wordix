@@ -3,125 +3,101 @@ include_once("wordix.php");
 
 //ejercicio 1
 
-    /**
-     * 
-     * 
-     * include_once("wordix.php");
+/** Realizamos una función cargarColeccionesPalabras donde se guardaran palabras ya cargadas para poder elegir y jugar dentro de Wordix 
+ * donde muestra variables del tipo array que tendran 15 palabras, todas de 5 letras de longitud 
+ * @return indexado
+ * */
 
-     * 
-     */
-function cargarColeccionPalabras()
+    function cargarColeccionPalabras()
+    //array $coleccionPalabras
     {
         $coleccionPalabras = ["CALOR","SILLA","MANGO","COCHE","MANOS","LIBRO","PARED","TACOS","RONDA","QUESO","PELON","CARNE","COMER","LUGAR","JUEGO","TABLA","PLATA","SONAR","NUDOS","CASAS"];
         return $coleccionPalabras;
     }
 
 
-    //ejercicio 2
+
+ //ejercicio 2
+
     /**
-     * 
-     * 
-     * 
-     * 
+     * Esta funcion carga las partidas guardadas
+     * @return multidimensional
      */
 function cargarPartidas()
-    {
-        $partidasGuardadas[0]= ["palabraWordix "=> "MANGO" , "jugador" => "felipe", "intentos"=> 0, "puntaje" => 0] ;
-        $partidasGuardadas[1]= ["palabraWordix "=> "CASAS" , "jugador" => "floyd", "intentos"=> 3, "puntaje" => 14];
-        $partidasGuardadas[2]= ["palabraWordix "=> "COCHE" , "jugador" => "floyd", "intentos"=> 6, "puntaje" => 10];
-        $partidasGuardadas[3]= ["palabraWordix "=> "RONDA" , "jugador" => "luis", "intentos"=> 4, "puntaje" => 8] ;
-        $partidasGuardadas[4]= ["palabraWordix "=> "QUESO" , "jugador" => "carl", "intentos"=> 3, "puntaje" => 10] ;
-        $partidasGuardadas[5]= ["palabraWordix "=> "CARNE" , "jugador" => "pepe", "intentos"=> 2, "puntaje" => 6] ;
-        $partidasGuardadas[6]= ["palabraWordix "=> "SILLA" , "jugador" => "floyd", "intentos"=> 1, "puntaje" => 4] ;
-        $partidasGuardadas[7]= ["palabraWordix "=> "QUESO" , "jugador" => "george", "intentos"=> 6, "puntaje" => 0] ;
-        $partidasGuardadas[8]= ["palabraWordix "=> "TABLA" , "jugador" => "kevin", "intentos"=> 5, "puntaje" => 10] ;
-        $partidasGuardadas[9]= ["palabraWordix "=> "NUDOS" , "jugador" => "ana", "intentos"=> 3, "puntaje" => 14] ;
-        
-        return $partidasGuardadas;
-    } 
+//array $partidaGuardadas
+{
+    $partidasGuardadas[0]= ["palabraWordix "=> "MANGO" , "jugador" => "felipe", "intentos"=> 0, "puntaje" => 0] ;
+    $partidasGuardadas[1]= ["palabraWordix "=> "CASAS" , "jugador" => "floyd", "intentos"=> 3, "puntaje" => 14];
+    $partidasGuardadas[2]= ["palabraWordix "=> "COCHE" , "jugador" => "floyd", "intentos"=> 6, "puntaje" => 10];
+    $partidasGuardadas[3]= ["palabraWordix "=> "RONDA" , "jugador" => "luis", "intentos"=> 4, "puntaje" => 8] ;
+    $partidasGuardadas[4]= ["palabraWordix "=> "QUESO" , "jugador" => "carl", "intentos"=> 3, "puntaje" => 10] ;
+    $partidasGuardadas[5]= ["palabraWordix "=> "CARNE" , "jugador" => "pepe", "intentos"=> 2, "puntaje" => 6] ;
+    $partidasGuardadas[6]= ["palabraWordix "=> "SILLA" , "jugador" => "floyd", "intentos"=> 1, "puntaje" => 4] ;
+    $partidasGuardadas[7]= ["palabraWordix "=> "QUESO" , "jugador" => "george", "intentos"=> 6, "puntaje" => 0] ;
+    $partidasGuardadas[8]= ["palabraWordix "=> "TABLA" , "jugador" => "kevin", "intentos"=> 5, "puntaje" => 10] ;
+    $partidasGuardadas[9]= ["palabraWordix "=> "NUDOS" , "jugador" => "ana", "intentos"=> 3, "puntaje" => 14] ;
     
-
-
-
-/**
- * pide el nombre de usuario
- * @return string
- */
-function nombreUsuario(){
-    //string $usuario
-    $primerNombre=true;
-    do{
-        if($primerNombre){
-            echo "Ingrese su nombre de usuario: ";
-            $usuario=strtolower(trim(fgets(STDIN)));
-            $primerNombre=false;
-        }else{
-            echo "Ingrese otro nombre de usuario que no comience con un número: ";
-            $usuario=strtolower(trim(fgets(STDIN)));
-        }
-        $verificar = ctype_alpha($usuario[0]);
-        
-    }while(!$verificar);
-
-    return $usuario;
-
-}
+    return $partidasGuardadas;
+} 
 
 
 
 //ejercicio 3
-/**
- * menu de inicio
- * @return int
- */
-function seleccionarOpcion()
-{
-    //int $opcion
-    echo "Menú de opciones:\n";
-    echo "1) Jugar al wordix con una palabra elegida\n";
-    echo "2) Jugar al wordix con una palabra aleatoria\n";
-    echo "3) Mostrar una partida\n";
-    echo "4) Mostrar la primer partida ganadora\n";
-    echo "5) Mostrar resumen de Jugador\n";
-    echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra\n";
-    echo "7) Agregar una palabra de 5 letras a Wordix\n";
-    echo "8) salir\n";
-
-    echo "Ingrese el numero de la opcion a seleccionar: ";
-    do{
-        $opcion = trim(fgets(STDIN));
-        switch ($opcion){    
-        case 1: echo "Seleccionaste la opción 1\n";break;
-        case 2: echo "Seleccionaste la opción 2\n";break;
-        case 3: echo "Seleccionaste la opción 3\n";break;
-        case 4: echo "Seleccionaste la opción 4\n";break;
-        case 5: echo "Seleccionaste la opción 5\n";break;
-        case 6: echo "Seleccionaste la opción 6\n";break;
-        case 7: echo "Seleccionaste la opción 7\n";break;
-        case 8: echo "Seleccionaste la opción 8\n";break;
-        default: echo "Seleccione una opcion valida\n";    
-    }}
-    while($opcion < 1 || $opcion >8);
-    
-    return $opcion;
-}
-
-
-
-    //ejercicio 6
 
     /**
+     * Esta función te muestra una serie de opciones para jugar al wordix (menu de inicio)
      * 
+     * @return string
      */
-    function datosPartida($partidasGuardadas , $numPartida)
-    {         
-        echo "Partida WORDIX ".$numPartida.": palabra " . $partidasGuardadas[$numPartida]["palabraWordix "]."\n" ;
-        echo "Jugador: " . $partidasGuardadas[$numPartida]["jugador"]."\n";
-        echo "Puntaje: " . $partidasGuardadas[$numPartida]["puntaje"]."\n";
-        echo "Intento: " . $partidasGuardadas[$numPartida]["intentos"]."\n";
-        
-    }
 
+    function seleccionarOpcion()
+    //string $opcion
+    {
+    
+        echo "Menú de opciones:\n";
+        echo "1) Jugar al wordix con una palabra elegida\n";
+        echo "2) Jugar al wordix con una palabra aleatoria\n";
+        echo "3) Mostrar una partida\n";
+        echo "4) Mostrar la primer partida ganadora\n";
+        echo "5) Mostrar resumen de Jugador\n";
+        echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra\n";
+        echo "7) Agregar una palabra de 5 letras a Wordix\n";
+        echo "8) salir\n";
+    
+        echo "Ingrese el numero de la opcion a seleccionar: ";
+        do{
+            $opcion = trim(fgets(STDIN));
+            switch ($opcion){    
+            case 1: echo "Seleccionaste la opción 1\n";break;
+            case 2: echo "Seleccionaste la opción 2\n";break;
+            case 3: echo "Seleccionaste la opción 3\n";break;
+            case 4: echo "Seleccionaste la opción 4\n";break;
+            case 5: echo "Seleccionaste la opción 5\n";break;
+            case 6: echo "Seleccionaste la opción 6\n";break;
+            case 7: echo "Seleccionaste la opción 7\n";break;
+            case 8: echo "Seleccionaste la opción 8\n";break;
+            default: echo "Seleccione una opcion valida\n";    
+        }}
+        while($opcion < 1 || $opcion >8);
+        
+        return $opcion;
+    }
+    
+    
+        // EJERCICIO 6
+    
+        /**
+         * función que muestra los datos de las partidas guardadas 
+         */
+        function datosPartida($partidasGuardadas , $numPartida)
+        {         
+            echo "Partida WORDIX ".$numPartida.": palabra " . $partidasGuardadas[$numPartida]["palabraWordix "]."\n" ;
+            echo "Jugador: " . $partidasGuardadas[$numPartida]["jugador"]."\n";
+            echo "Puntaje: " . $partidasGuardadas[$numPartida]["puntaje"]."\n";
+            echo "Intento: " . $partidasGuardadas[$numPartida]["intentos"]."\n";
+            
+        }
+    
 
 
 //EJERCICIO 7
