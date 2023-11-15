@@ -444,7 +444,7 @@ function palabraDisponible($nombre, $partidasGuardadas, $coleccionPalabrasWordix
 
     /*
      * 
-     * Programa del juego wordix que ordena todas las funciones para poder jugar al wordix y visualizarlo
+     * Programa del juego wordix que ordena todas las funciones para poder jugar Wordix
      * int $cantidadDePartidas, $opcionElegida
      * string $nombreJugador
      * float 
