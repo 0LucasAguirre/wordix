@@ -11,7 +11,13 @@ include_once("wordix.php");
     function cargarColeccionPalabras()
     //array $coleccionPalabras
     {
-        $coleccionPalabras = ["CALOR","SILLA","MANGO","COCHE","MANOS","LIBRO","PARED","TACOS","RONDA","QUESO","PELON","CARNE","COMER","LUGAR","JUEGO","TABLA","PLATA","SONAR","NUDOS","CASAS"];
+        $coleccionPalabras = ["CALOR","SILLA","MANGO","COCHE","MANOS",
+                              "LIBRO","PARED","TACOS","RONDA","QUESO",
+                              "PELON","CARNE","COMER","LUGAR","JUEGO",
+                              "TABLA","PLATA","SONAR","NUDOS","CASAS",
+                              "JAPON", "PERRO", "ZORRO", "QUINO", "AKIRA",
+                              "CHILE", "URGIR", "DADOS", "JUGAR", "JUNCO",
+                              "SALIR", "MANTA", "MARTE", "VENUS", "XENON"];
         return $coleccionPalabras;
     }
 
