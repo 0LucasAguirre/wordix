@@ -26,6 +26,7 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 /***** DEFINICION DE FUNCIONES ********/
 /**************************************/
 
+//EJERCICIO 5
 /**
  * Veryfica si el numero es ENTERO, si esta en entre los valores $min y $max y si esta en forma de string, lo pasa a ENTERO, de lo contrario, volvera a solicitar otro numero
  * @param int $min
@@ -154,6 +155,8 @@ function esPalabra($cadena)
     return $esLetra;
 }
 
+
+//EJERCICIO 4
 /**
  * Funcion que verifica que la palabra contenga 5 letras y que sea una palabra valida del abecedario caso contrario, solicitara una nueva
  * @return string
