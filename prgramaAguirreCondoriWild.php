@@ -4,7 +4,7 @@ include_once("wordix.php");
 //EJERCICIO 1
 
 /**  Función que carga Coleccion de Palabras para jugar wordix 
- * @return array (indexado)
+ * @return array 
  * */
 
     function cargarColeccionPalabras()
