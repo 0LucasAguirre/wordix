@@ -27,7 +27,7 @@ include_once("wordix.php");
 
     /**
      * Esta funcion carga las partidas guardadas
-     * @return array (multidimensional)
+     * @return array 
      */
 function cargarPartidas()
 //array $partidaGuardadas
@@ -126,7 +126,7 @@ function cargarPartidas()
      * Solicita el ingreso de una nueva palabra para Wordix, 
      * la cual  no debe existir en la coleccion de palabras original.
      * @param array $coleccionPalabras
-     * @return array $nuevaPalabra
+     * @return string
      */
     function nuevaPalabraWordix($coleccionPalabras)
     {
@@ -158,7 +158,7 @@ function cargarPartidas()
      * En caso este no haya ganado partidas el indice de retorno sera -1.
      * @param array $coleccionDePartidas
      * @param String $jugador
-     * @return array 
+     * @return int
      */
     function primerPartidaGanada($coleccionDePartidas, $jugador)
     {  
@@ -250,7 +250,7 @@ function cargarPartidas()
      * solicita al usuario el nombre de un jugador y 
      * retorna el nombre en minúsculas. Ademas asegura que el nombre del jugador 
      * comience con una letra
-     * @return String $nombreJugadorMinuscula
+     * @return String 
      */
 function  solicitarJugador()
 {
@@ -294,7 +294,7 @@ function  solicitarJugador()
  * la igualdad
  * @param array $partidaA
  * @param array $partidaA
- * @return int $res
+ * @return int 
  */
 function compararPartidas($partidaA , $partidaB)
 {   
