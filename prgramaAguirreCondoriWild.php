@@ -62,6 +62,7 @@ function cargarPartidas()
 
     {
     //string $opcion
+        echo "***************************************************\n";
         echo "Menú de opciones:\n";
         echo "1) Jugar al wordix con una palabra elegida\n";
         echo "2) Jugar al wordix con una palabra aleatoria\n";
@@ -87,7 +88,7 @@ function cargarPartidas()
             default: echo "Seleccione una opcion valida\n";    
         }}
         while($opcion < 1 || $opcion >8);
-        
+        echo "***************************************************\n";
         return $opcion;
     }
     
@@ -515,8 +516,9 @@ function palabraDisponible($nombre, $partidasGuardadas, $coleccionPalabrasWordix
         }
     }while($opcionElegida != 8);
     
-    echo "Hasta la proxima.";
-
+    echo "***************************************************\n";
+    echo "Gracias por jugar, hasta la proxima.";
+    echo "***************************************************\n";
 
 
 
