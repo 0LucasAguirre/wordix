@@ -88,7 +88,6 @@ function cargarPartidas()
             default: echo "Seleccione una opcion valida\n";    
         }}
         while($opcion < 1 || $opcion >8);
-        echo "***************************************************\n";
         return $opcion;
     }
     
