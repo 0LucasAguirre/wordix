@@ -3,13 +3,11 @@ include_once("wordix.php");
 
 //ejercicio 1
 
-/** Realizamos una función cargarColeccionesPalabras donde se guardaran palabras ya cargadas para poder elegir y jugar dentro de Wordix 
- * donde muestra variables del tipo array que tendran 15 palabras, todas de 5 letras de longitud 
+/**  Función que carga Coleccion de Palabras para jugar wordix 
  * @return array (indexado)
  * */
 
     function cargarColeccionPalabras()
-    //array $coleccionPalabras
     {
          //array $coleccionPalabras
         $coleccionPalabras = ["CALOR","SILLA","MANGO","COCHE","MANOS",
@@ -24,10 +22,12 @@ include_once("wordix.php");
 
 
 
+
+
  //ejercicio 2
 
     /**
-     * Esta funcion carga las partidas guardadas
+     * Esta funcion carga una coleccion de partidas Wordix
      * @return array 
      */
 function cargarPartidas()
@@ -49,19 +49,18 @@ function cargarPartidas()
 } 
 
 
-
 //ejercicio 3
 
     /**
      * Esta función te muestra una serie de opciones para jugar al wordix (menu de inicio)
      * 
-     * @return string
+     * @return int
      */
 
     function seleccionarOpcion()
 
     {
-    //string $opcion
+    //int $opcion
         echo "***************************************************\n";
         echo "Menú de opciones:\n";
         echo "1) Jugar al wordix con una palabra elegida\n";
@@ -443,12 +442,18 @@ function palabraDisponible($nombre, $partidasGuardadas, $coleccionPalabrasWordix
     }
 
 
-    /**
+    /*
      * 
-     * EJERCICIOS 13 EXPLICACION 3 
-     * 
-     * 
+     * Programa del juego wordix que ordena todas las funciones para poder jugar al wordix y visualizarlo
+     * int $cantidadDePartidas, $opcionElegida
+     * string $nombreJugador
+     * float 
+     * array $palabrasGuardadas
      */
+
+
+
+
     $partidasGuardadas = cargarPartidas();
     $palabrasGuardadas = cargarColeccionPalabras();
     do{
