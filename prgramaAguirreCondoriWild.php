@@ -1,7 +1,7 @@
 <?php
 include_once("wordix.php");
 
-//ejercicio 1
+//EJERCICIO 1
 
 /**  Función que carga Coleccion de Palabras para jugar wordix 
  * @return array (indexado)
@@ -24,7 +24,7 @@ include_once("wordix.php");
 
 
 
- //ejercicio 2
+ //EJERCICIO 2
 
     /**
      * Esta funcion carga una coleccion de partidas Wordix
@@ -49,7 +49,7 @@ function cargarPartidas()
 } 
 
 
-//ejercicio 3
+// EJERCICIO 3
 
     /**
      * Esta función te muestra una serie de opciones para jugar al wordix (menu de inicio)
@@ -91,16 +91,15 @@ function cargarPartidas()
     }
     
     
-        // EJERCICIO 6
+       // EJERCICIO 6
     
         /**
          * función que muestra los datos de las partidas guardadas 
          */
         function datosPartida($partidasGuardadas , $numPartida)
-        {         
-            //int $indiceDePartidaReal
-            $indiceDePartidaReal = $partidasGuardadas[$numPartida]["palabraWordix "] + 1;
-            echo "Partida WORDIX ".$numPartida.": palabra " . $indiceDePartidaReal."\n" ;
+        {       
+            $indiceDePartidaReal = $numPartida + 1;
+            echo "Partida WORDIX ".$indiceDePartidaReal.": palabra " . $partidasGuardadas[$numPartida]["palabraWordix "]."\n" ;
             echo "Jugador: " . $partidasGuardadas[$numPartida]["jugador"]."\n";
             echo "Puntaje: " . $partidasGuardadas[$numPartida]["puntaje"]."\n";
             echo "Intento: " . $partidasGuardadas[$numPartida]["intentos"]."\n";
