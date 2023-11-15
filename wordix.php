@@ -433,7 +433,7 @@ function cargarVocales(){
  * funcion que otorga un puntaje a base de sus intentos 
  *@param int $numIntento
  */
-function puntajePorIntentos($numIntento)  /* ****COMPLETAR***** parámetros formales necesarios */
+function puntajePorIntentos($numIntento)  
 {
     switch($numIntento){
         case 1: $puntaje = 6 ; break;
@@ -444,7 +444,7 @@ function puntajePorIntentos($numIntento)  /* ****COMPLETAR***** parámetros form
         case 6: $puntaje = 1 ; break;
         default: $puntaje = 0; break;
     }
-    /* ****COMPLETAR***** cuerpo de la función*/
+
     return $puntaje;
 }
 
@@ -456,7 +456,7 @@ function puntajePorIntentos($numIntento)  /* ****COMPLETAR***** parámetros form
  *@param int $intJugados
  *@return float
  */
-function obtenerPuntajeWordix($ultimoIntWordix,$intJugados)  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($ultimoIntWordix,$intJugados)  
 {
     //string $consonantes, $vocal, float $puntLetras, $puntajeIntent, $puntajeTotal
     $consonantes= cargarConsonantes();
@@ -465,14 +465,14 @@ function obtenerPuntajeWordix($ultimoIntWordix,$intJugados)  /* ****COMPLETAR***
     $puntLetras=puntajeLetrasPalabra($ultimoIntWordix,$vocal,$consonantes);
     $puntajeIntent=puntajePorIntentos($intJugados);
     $puntajeTotal=$puntLetras+$puntajeIntent;
-    /* ****COMPLETAR***** cuerpo de la función*/
+    
     return $puntajeTotal;
 }
 
 
 
 
-//lllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
+
 
 /**
  * Dada una palabra para adivinar, juega una partida de wordix intentando que el usuario adivine la palabra.
