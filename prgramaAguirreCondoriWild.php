@@ -98,7 +98,9 @@ function cargarPartidas()
          */
         function datosPartida($partidasGuardadas , $numPartida)
         {         
-            echo "Partida WORDIX ".$numPartida.": palabra " . $partidasGuardadas[$numPartida]["palabraWordix "]."\n" ;
+            //int $indiceDePartidaReal
+            $indiceDePartidaReal = $partidasGuardadas[$numPartida]["palabraWordix "] + 1;
+            echo "Partida WORDIX ".$numPartida.": palabra " . $indiceDePartidaReal."\n" ;
             echo "Jugador: " . $partidasGuardadas[$numPartida]["jugador"]."\n";
             echo "Puntaje: " . $partidasGuardadas[$numPartida]["puntaje"]."\n";
             echo "Intento: " . $partidasGuardadas[$numPartida]["intentos"]."\n";
